@@ -14,6 +14,7 @@ import mk.ukim.finki.wp.emtlab.service.domain.BookService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -84,6 +85,14 @@ public class BookApplicationServiceImpl implements BookApplicationService {
     @Override
     public Page<DisplayBookDTO> findAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
+
+        return bookService.findAll(pageable)
+                .map(DisplayBookDTO::from);
+    }
+
+    @Override
+    public Object findAll(int page, int size, String sortBy) {
+        Pageable pageable=PageRequest.of(page, size, Sort.by(sortBy));
 
         return bookService.findAll(pageable)
                 .map(DisplayBookDTO::from);

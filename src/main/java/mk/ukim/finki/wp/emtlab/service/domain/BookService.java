@@ -23,7 +23,9 @@ public interface BookService {
 
     Optional<Book> returnBook(Long id);
 
-    Page<Book> findAll(Pageable pageable);
+//    Page<Book> findAll(Pageable pageable);
 
     Page<Book> getBooks(Category category, String author, Boolean available, Pageable pageable);
+
+    Page<Book> findAll(Pageable pageable);
 }

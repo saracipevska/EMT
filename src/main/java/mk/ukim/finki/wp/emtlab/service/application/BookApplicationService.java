@@ -23,4 +23,6 @@ public interface BookApplicationService {
     Optional<DisplayBookDTO> returnBook (Long bookId);
 
     Page<DisplayBookDTO> findAll(int page, int size);
+
+    Object findAll(int page, int size, String sortBy);
 }

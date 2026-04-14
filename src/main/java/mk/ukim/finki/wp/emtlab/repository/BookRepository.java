@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
@@ -57,6 +58,8 @@ Page<Book> findAllFiltered(@Param("category") Category category,
                            @Param("authorId") Long authorId,
                            @Param("availableCopies") Integer availableCopies,
                            Pageable pageable);
+
+//    Optional<Object> findAll(int page, int size, String sortBy);
 //    @EntityGraph(attributePaths = {"author", "author.country"})
 //    List<BookDetailsProjection> findAll2();
 

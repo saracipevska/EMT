@@ -2,17 +2,15 @@ package mk.ukim.finki.wp.emtlab.service.domain.impl;
 
 import jakarta.transaction.Transactional;
 import mk.ukim.finki.wp.emtlab.events.BookBorrowedEvent;
-import mk.ukim.finki.wp.emtlab.model.domain.Author;
 import mk.ukim.finki.wp.emtlab.model.domain.Book;
 import mk.ukim.finki.wp.emtlab.model.domain.Category;
-import mk.ukim.finki.wp.emtlab.model.dto.DisplayBookDTO;
 import mk.ukim.finki.wp.emtlab.repository.BookRepository;
 import mk.ukim.finki.wp.emtlab.service.domain.BookService;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -124,6 +122,13 @@ public class BookServiceImpl implements BookService {
     public Page<Book> getBooks(Category category, String author, Boolean available, Pageable pageable) {
         return null;
     }
+
+//    @Override
+//    public Page<Book> findAll(Pageable pageable) {
+////        Pageable pageable=PageRequest.of(page, size, Sort.by(sortBy));
+//        return bookRepository.findAll(pageable);
+//    }
+
 
 //    @Override
 //    public Page<Book> getBooks(Category category, String author, Boolean available, Pageable pageable) {

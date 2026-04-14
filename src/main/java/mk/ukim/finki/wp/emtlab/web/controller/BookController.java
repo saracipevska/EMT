@@ -91,15 +91,25 @@ public class BookController {
         return bookApplicationService.findAll(page, size);
     }
 
-    @GetMapping("/pagination")
-    public Page<Book> listBooks(
-            @RequestParam(required = false) Category category,
-            @RequestParam(required = false) String author,
-            @RequestParam(required = false) Boolean available,
-            @PageableDefault(size = 10, sort = "createdAt") Pageable pageable
+//    @GetMapping("/pagination")
+//    public Page<Book> listBooks(
+//            @RequestParam(required = false) Category category,
+//            @RequestParam(required = false) String author,
+//            @RequestParam(required = false) Boolean available,
+//            @PageableDefault(size = 10, sort = "name") Pageable pageable
+//    ) {
+//        return bookService.getBooks(category, author, available, pageable);
+//    }
+
+    @GetMapping("/paginated")
+    public ResponseEntity<Page<DisplayBookDTO>> findAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "name") String sortBy
     ) {
-        return bookService.getBooks(category, author, available, pageable);
+        return ResponseEntity.ok((Page<DisplayBookDTO>) bookApplicationService.findAll(page, size, sortBy));
     }
+
 
     //Да се овозможи барем еден endpoint
     // што ќе враќа податоци преку projection наместо преку ентитет или класичен DTO.
